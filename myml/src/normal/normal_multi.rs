@@ -55,9 +55,9 @@ where
 /// 多変量正規分布からのサンプリング
 ///
 /// **引数**
-/// - n: サンプリング数
-/// - mu: 平均
-/// - cov: 共分散行列
+/// - `n`: サンプリング数
+/// - `mu`: 平均
+/// - `cov`: 共分散行列
 pub fn multivariate_normal_sample<F>(
     n: usize,
     mu: ArrayView<F, Ix1>,
