@@ -17,3 +17,7 @@ parts:
     - file: step3/3-1_多次元配列
     - file: step3/3-2_多次元正規分布
     - file: step3/3-4_多次元正規分布の最尤推定
+  - caption: ステップ4
+    chapters:
+    - file: step4/4-1_混合ガウスモデル
+    - file: step4/4-3_混合ガウスモデルの実装
