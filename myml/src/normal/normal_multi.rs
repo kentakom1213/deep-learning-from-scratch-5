@@ -1,10 +1,12 @@
 use std::f64::consts::PI;
 
 use ndarray::{Array, ArrayView, Ix1, Ix2, LinalgScalar, NdFloat};
-use ndarray_linalg::{Determinant, Inverse, Lapack, Scalar};
+use ndarray_linalg::{Cholesky, Determinant, Inverse, Lapack, Scalar, UPLO};
 use num_traits::Float;
+use rand::{thread_rng, Rng};
+use rand_distr::StandardNormal;
 
-/// 多変量正規分布
+/// 多変量正規分布の確率密度関数
 ///
 /// **引数**
 /// - `x`: ベクトル `(1,D)`
@@ -50,6 +52,49 @@ where
     Some(pdf_diag)
 }
 
+/// 多変量正規分布からのサンプリング
+///
+/// **引数**
+/// - n: サンプリング数
+/// - mu: 平均
+/// - cov: 共分散行列
+pub fn multivariate_normal_sample<F>(
+    n: usize,
+    mu: ArrayView<F, Ix1>,
+    cov: ArrayView<F, Ix2>,
+) -> Option<Vec<Array<F, Ix1>>>
+where
+    F: Float + NdFloat + LinalgScalar + Lapack,
+{
+    let &[k] = mu.shape() else {
+        return None;
+    };
+    let &[l, m] = cov.shape() else {
+        return None;
+    };
+    if k != l || l != m {
+        return None;
+    }
+
+    // コレスキー分解
+    let chol_cov = cov.cholesky(UPLO::Lower).ok()?;
+
+    let mut rng = thread_rng();
+
+    let res = (0..n)
+        .map(|_| {
+            // 標準正規分布からサンプリング
+            let z = Array::from_shape_fn((k,), |_| {
+                let x: f64 = rng.sample(StandardNormal);
+                F::from(x).unwrap()
+            });
+            &mu + chol_cov.dot(&z)
+        })
+        .collect::<Vec<_>>();
+
+    Some(res)
+}
+
 #[cfg(test)]
 mod test_normal_multi {
     use super::*;
@@ -73,5 +118,15 @@ mod test_normal_multi {
             res[0],
             ans
         );
+    }
+
+    #[test]
+    fn test_sample_multivariate_normal() {
+        let mu = array![1.0, 2.0];
+        let cov = array![[1.0, 0.0], [0.0, 1.0],];
+
+        let res = multivariate_normal_sample(10, mu.view(), cov.view());
+
+        eprintln!("{res:?}");
     }
 }
