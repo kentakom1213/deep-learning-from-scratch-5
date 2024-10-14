@@ -26,28 +26,28 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # # Install dependencies
-      # - name: Set up Python 3.11
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: 3.11
+      # Install dependencies
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
 
-      # - name: Install dependencies
-      #   run: |
-      #     pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
 
-      # - name: Setup Rust
-      #   uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
       
-      # - name: Install Rust Kernel
-      #   run: |
-      #     cargo install --locked evcxr_jupyter
-      #     evcxr_jupyter --install
+      - name: Install Rust Kernel
+        run: |
+          cargo install --locked evcxr_jupyter
+          evcxr_jupyter --install
 
-      # # Build the book
-      # - name: Build the book
-      #   run: |
-      #     jupyter-book build .
+      # Build the book
+      - name: Build the book
+        run: |
+          jupyter-book build .
 
       # Upload the book's HTML as an artifact
       - name: Upload artifact
