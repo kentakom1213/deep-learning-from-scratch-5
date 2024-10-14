@@ -1,4 +1,11 @@
-/// np.linspace関数
+//! ユーティリティ
+
+/// [numpy.linspace](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html#numpy-linspace)関数に相当する関数
+/// 
+/// **引数**
+/// - `start`: 開始値
+/// - `end`: 終了値
+/// - `n`: 分割数
 pub fn linspace(start: f64, end: f64, n: usize) -> Vec<f64> {
     assert!(start < end);
     assert!(n > 1);
