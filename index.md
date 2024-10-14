@@ -23,3 +23,12 @@ VSCode上で実行できるようにしておくと便利です．
 JupyterNotebook上でRustを実行できるようにしてくれます．
 
 - https://github.com/evcxr/evcxr/blob/main/evcxr_jupyter/README.md
+
+---
+
+#### その他
+
+複数のステップで共通して利用する処理は**mymlクレート**にまとめています．
+
+- 実装：https://github.com/kentakom1213/deep-learning-from-scratch-5/tree/main/myml
+- ドキュメント：https://kentakom1213.github.io/deep-learning-from-scratch-5/myml/
