@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 ndarray = { version = "0.15.6" }
 ndarray-linalg = { version = "0.16.0", features = ["openblas"] }
+num-traits = "0.2.19"
