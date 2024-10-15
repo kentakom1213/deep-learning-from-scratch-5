@@ -50,7 +50,9 @@ jobs:
       #     jupyter-book build .
 
       - name: test
-        run: ls -l
+        run: |
+          pwd
+          ls -l
 
       # Upload the book's HTML as an artifact
       - name: Upload artifact
@@ -70,7 +72,10 @@ jobs:
       #   run: cargo doc
 
       - name: test
-        run: ls -l
+        run: |
+          pwd
+          ls -l
+          ls -l ..
 
       - name: Deploy
         uses: actions/upload-pages-artifact@v1
