@@ -70,7 +70,7 @@ jobs:
 
       # Build doc
       - name: Run doc
-        run: cargo doc
+        run: cargo doc --no-deps
 
       # Upload the book's HTML as an artifact
       - name: Upload artifact
