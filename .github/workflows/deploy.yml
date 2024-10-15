@@ -73,7 +73,7 @@ jobs:
         id: merge-artifacts
         uses: actions/upload-artifact/merge@v4
         with:
-          pattern: 'artifact-*/**'
+          pattern: 'artifact-*'
           delete-merged: true
           
       # Deploy the book's HTML to GitHub Pages
