@@ -26,10 +26,28 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: make book
+      # Install dependencies
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
         run: |
-          mkdir -p _build/html
-          echo "test" > _build/html/index.html
+          pip install -r requirements.txt
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      
+      - name: Install Rust Kernel
+        run: |
+          cargo install --locked evcxr_jupyter
+          evcxr_jupyter --install
+
+      # Build the book
+      - name: Build the book
+        run: |
+          jupyter-book build .
 
       # Upload the book's HTML as an artifact
       - name: Upload artifact
@@ -47,10 +65,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: make doc
-        run: |
-          mkdir -p target/doc/myml
-          echo "doc" > target/doc/myml/index.html
+      # Build doc
+      - name: Run doc
+        run: cargo doc
 
       # Upload the book's HTML as an artifact
       - name: Upload artifact
@@ -79,13 +96,6 @@ jobs:
           name: |
             artifact-doc
             artifact-book
-
-      # show result of download
-      - name: Show downloaded files
-        run: |
-          ls -l
-          ls -l artifact-doc
-          ls -l artifact-book
       
       # merge artifacts
       - name: Merge artifacts
