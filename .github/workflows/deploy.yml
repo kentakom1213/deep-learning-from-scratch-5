@@ -48,15 +48,14 @@ jobs:
 
       - name: make doc
         run: |
-          mkdir -p target/doc
+          mkdir -p target/doc/myml
           echo "doc" > target/doc/myml/index.html
 
       # Upload the book's HTML as an artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          name: doc
-          path: "target/doc"
+          path: "myml/target/doc"
 
   deploy:
     needs: [build-book, build-doc]
