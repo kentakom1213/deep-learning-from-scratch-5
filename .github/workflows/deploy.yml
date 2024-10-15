@@ -47,7 +47,7 @@ jobs:
 
       - name: make doc
         run: |
-          mkdir -p target/doc
+          mkdir -p target/doc/myml
           echo "doc" > target/doc/myml/index.html
 
       # Upload the book's HTML as an artifact
