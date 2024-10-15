@@ -31,7 +31,7 @@ jobs:
           mkdir -p _build/html
           echo "test" > _build/html/index.html
 
-    # Upload the book's HTML as an artifact
+      # Upload the book's HTML as an artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -73,9 +73,10 @@ jobs:
         id: merge-artifacts
         uses: actions/upload-artifact/merge@v4
         with:
-          pattern: 'artifact-*'
+          name: github-pages
+          pattern: "artifact-*"
           delete-merged: true
-          
+
       # Deploy the book's HTML to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
