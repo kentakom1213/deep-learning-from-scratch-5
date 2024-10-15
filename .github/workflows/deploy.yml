@@ -55,6 +55,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
+          name: doc
           path: "myml/target/doc"
 
   deploy:
@@ -70,8 +71,9 @@ jobs:
       # Merge artifacts
       - name: Merge artifacts
         id: merge-artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/upload-artifact/merge@v4
         with:
+          pattern: "*"
           name: book
 
       # Deploy the book's HTML to GitHub Pages
