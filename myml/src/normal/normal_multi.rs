@@ -20,7 +20,7 @@ pub fn multivariate_normal<F>(
 where
     F: Float + NdFloat + LinalgScalar + Lapack,
 {
-    let &[n, m] = x.shape() else {
+    let &[_n, m] = x.shape() else {
         return None;
     };
     let &[n_mu] = mu.shape() else {
