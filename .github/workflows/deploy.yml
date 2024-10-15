@@ -68,15 +68,33 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Merge artifacts
+      # Download the book's HTML artifact
+      - uses: actions/download-artifact@v4
+
+      # Delete artifacts
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: |
+            artifact-doc
+            artifact-book
+
+      # show result of download
+      - name: Show downloaded files
+        run: |
+          ls -l
+      
+      # merge artifacts
       - name: Merge artifacts
-        id: merge-artifacts
-        uses: actions/upload-artifact/merge@v4
+        run: |
+          cp -r artifact-doc/* artifact-book
+      
+      # Upload the book's HTML as an artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
-          pattern: "artifact-*"
-          delete-merged: true
-
+          path: "artifact-book"
+      
       # Deploy the book's HTML to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
