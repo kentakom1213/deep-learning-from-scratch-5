@@ -35,7 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          name: book
+          name: artifact-book
           path: "_build/html"
 
   build-doc:
@@ -55,7 +55,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          name: doc
+          name: artifact-doc
           path: "myml/target/doc"
 
   deploy:
@@ -73,6 +73,7 @@ jobs:
         id: merge-artifacts
         uses: actions/upload-artifact/merge@v4
         with:
+          pattern: 'artifact-*/**'
           delete-merged: true
           
       # Deploy the book's HTML to GitHub Pages
