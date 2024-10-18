@@ -31,3 +31,11 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# sphinx
+sphinx:
+  config:
+    html_baseurl            : "https://kentakom1213.github.io/deep-learning-from-scratch-5/"
+    sitemap_url_scheme      : "{link}"
+  extra_extensions:
+    - sphinx_sitemap
