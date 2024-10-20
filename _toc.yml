@@ -6,23 +6,23 @@ root: index
 parts:
   - caption: ステップ1
     chapters:
-    - file: step1/1-2_正規分布
-    - file: step1/1-3_中心極限定理
-    - file: step1/1-4_サンプル和の確率分布
+      - file: step1/1-2_正規分布
+      - file: step1/1-3_中心極限定理
+      - file: step1/1-4_サンプル和の確率分布
   - caption: ステップ2
     chapters:
-    - file: step2/2_身長データの最尤推定
+      - file: step2/2_身長データの最尤推定
   - caption: ステップ3
     chapters:
-    - file: step3/3-1_多次元配列
-    - file: step3/3-2_多次元正規分布
-    - file: step3/3-4_多次元正規分布の最尤推定
+      - file: step3/3-1_多次元配列
+      - file: step3/3-2_多次元正規分布
+      - file: step3/3-4_多次元正規分布の最尤推定
   - caption: ステップ4
     chapters:
-    - file: step4/4-1_混合ガウスモデル
-    - file: step4/4-3_混合ガウスモデルの実装
-    - file: step4/4-4_GMMのパラメータ推定.md
+      - file: step4/4-1_混合ガウスモデル
+      - file: step4/4-3_混合ガウスモデルの実装
+      - file: step4/4-4_GMMのパラメータ推定
   - caption: ステップ5
     chapters:
-    - file: step5/5-1_KLダイバージェンス.md
-    - file: step5/5-2_EMアルゴリズム.md
+      - file: step5/5-1_KLダイバージェンス
+      - file: step5/5-2_EMアルゴリズム
