@@ -21,6 +21,7 @@ parts:
     chapters:
     - file: step4/4-1_混合ガウスモデル
     - file: step4/4-3_混合ガウスモデルの実装
+    - file: step4/4-4_GMMのパラメータ推定.md
   - caption: ステップ5
     chapters:
     - file: step5/5-1_KLダイバージェンス.md
