@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - jupyter-book
+    paths:
+      - "myml/**"
 
 env:
   BASE_URL: /${{ github.event.repository.name }}
