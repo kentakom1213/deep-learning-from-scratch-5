@@ -1,3 +1,3 @@
-# deep-learning-from-scratch-5
+# DeepLearning from scratch 5 in Rust
 
-「ゼロから作るDeepLearning 5 （生成モデル編）」
+「ゼロから作るディープラーニング5」をRustで実装する
