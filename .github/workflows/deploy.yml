@@ -43,7 +43,7 @@ jobs:
 
       - name: Setup Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
-      
+
       - name: Install Rust Kernel
         run: |
           cargo install --locked evcxr_jupyter
@@ -101,19 +101,19 @@ jobs:
           name: |
             artifact-doc
             artifact-book
-      
+
       # merge artifacts
       - name: Merge artifacts
         run: |
           cp -r artifact-doc/* artifact-book
-      
+
       # Upload the book's HTML as an artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
           path: "artifact-book"
-      
+
       # Deploy the book's HTML to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
