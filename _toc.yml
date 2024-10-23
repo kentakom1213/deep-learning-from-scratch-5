@@ -26,3 +26,4 @@ parts:
     chapters:
       - file: step5/5-1-1_KLダイバージェンス
       - file: step5/5-1-2_KLダイバージェンスと最尤推定
+      - file: step5/5-2_EMアルゴリズム
